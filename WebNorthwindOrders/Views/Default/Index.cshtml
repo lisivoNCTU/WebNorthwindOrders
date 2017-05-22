@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebNorthwindOrders.Models.CustOrdersOrders_Result>
+@{
+    ViewBag.Title = WebNorthwindOrders.Resources.Default.Order_List;
+}
+<h2>
+@WebNorthwindOrders.Resources.Default.Order_List
+</h2>
+<div ></div>
+<form method="post">
+@WebNorthwindOrders.Resources.Default.Search <input name="txtSearch" width="400px" type="text" />
+
+<input type="submit" name="btnSearch" value="@WebNorthwindOrders.Resources.Default.Search"/>
+    </form>
+<br />
+<input type="button" value=@WebNorthwindOrders.Resources.Default.Create onclick="location.href='@Url.Action("Create", "Default")'"/>
+
+<table>
+    
+    <thead>
+        <tr>
+            <td>@WebNorthwindOrders.Resources.Default.Order_ID</td>
+            <td>@WebNorthwindOrders.Resources.Default.Customer_ID</td>
+           <td>@WebNorthwindOrders.Resources.Default.Ship_City</td>
+            <td>@WebNorthwindOrders.Resources.Default.Ship_Address</td>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShipAddress)
+            </td>
+      
+            <td>
+                @Html.ActionLink(@WebNorthwindOrders.Resources.Default.Edit, "Edit", new { id = item.OrderID })
+                @Html.ActionLink(WebNorthwindOrders.Resources.Default.Delete, "Delete", new { id = item.OrderID })
+            </td>
+        </tr>
+    }
+
+</table>
+@{
+    if (TempData["ErrMsg"] != null)
+    {
+         <script type="text/javascript">
+         alert('@TempData["ErrMsg"]');
+       
+        </script>
+    };
+
+}
+

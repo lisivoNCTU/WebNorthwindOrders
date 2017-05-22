@@ -1,0 +1,44 @@
+﻿@model WebNorthwindOrders.Models.Order
+@{
+    ViewBag.Title = WebNorthwindOrders.Resources.Default.Edit_Order;
+}
+
+<h2>@WebNorthwindOrders.Resources.Default.Edit_Order</h2>
+
+@using (Html.BeginForm("Edit", "Default", FormMethod.Post))
+{
+   
+    <table>
+        <thead><tr><td>@WebNorthwindOrders.Resources.Default.Order_ID</td><td><input name="txtOrderId" readonly="true" type="text" value=@Request.Url.Segments[3] ></td></tr></thead>
+        <tr>
+            <td>
+               @WebNorthwindOrders.Resources.Default.Order_Date
+            </td>
+            <td>
+                @Html.EditorFor(model => model.OrderDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @WebNorthwindOrders.Resources.Default.Required_Date
+            </td>
+            <td>
+                @Html.EditorFor(model => model.RequiredDate)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @WebNorthwindOrders.Resources.Default.Shipped_Date
+            </td>
+            <td>
+                @Html.EditorFor(model => model.ShippedDate)
+            </td>
+        </tr>
+        
+
+</table>
+<input type="submit" value=@WebNorthwindOrders.Resources.Default.Save>
+
+}
+@Html.ActionLink(WebNorthwindOrders.Resources.Default.Back_To_List,"Index")

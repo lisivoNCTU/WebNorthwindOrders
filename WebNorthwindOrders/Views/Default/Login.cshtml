@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = WebNorthwindOrders.Resources.Default.System_Login;
+}
+
+<h3>@WebNorthwindOrders.Resources.Default.System_Login</h3>
+<body>
+    <div>
+        <form method="post">
+            <table>
+                <tr><td>@WebNorthwindOrders.Resources.Default.Account</td><td><input name="txtUserId" type="text" /></td></tr>
+                <tr><td>@WebNorthwindOrders.Resources.Default.Password</td><td><input name="txtPassword" type="password" /></td></tr>
+            </table>
+
+            <input name="button" type="submit" value=@WebNorthwindOrders.Resources.Default.Login>
+
+        </form>
+            @using (Html.BeginForm("Login","Default",FormMethod.Get)) {
+        @WebNorthwindOrders.Resources.Default.Language
+
+            @Html.DropDownList("Lan", new SelectList(ViewBag.Language,"Value","Text",ViewBag.SelectedItem),
+           new {onchange="form.submit();" })
+            }
+     
+
+    </div>
+    @{
+        if (TempData["msg"] != null)
+        {
+            <script type="text/javascript">
+                    alert('@TempData["msg"]');
+                    
+            </script>
+            };
+
+    }
+</body>
+
+
+

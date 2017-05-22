@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebNorthwindOrders.Models.Order>
+@{
+    ViewBag.Title = WebNorthwindOrders.Resources.Default.Create_Order;
+}
+<h2>@WebNorthwindOrders.Resources.Default.Create_Order</h2>
+<div>
+    <form method="post">
+        <table>
+    <tr><td>@WebNorthwindOrders.Resources.Default.Order_ID</td><td><input name="txtOrderId" type="text" /></td></tr>
+            <tr><td>@WebNorthwindOrders.Resources.Default.Customer_ID</td><td><input name="txtCustomerID" type="text" /></td></tr>
+            <tr><td>@WebNorthwindOrders.Resources.Default.Ship_City</td><td><input name="txtShipCity" type="text" /></td></tr>
+            <tr><td>@WebNorthwindOrders.Resources.Default.Ship_Address</td><td><input name="txtShipAddress" type="text" /></td></tr>
+                <tr><td>@WebNorthwindOrders.Resources.Default.Order_Date</td><td><input name="txtOrderDate" type="date" value=@DateTime.Today /></td></tr>
+            <tr><td>@WebNorthwindOrders.Resources.Default.Required_Date</td><td><input name="txtRequiredDate" type="text" value=@DateTime.Today /></td></tr>
+            <tr><td>@WebNorthwindOrders.Resources.Default.Shipped_Date</td><td><input name="txtShippedDate" type="text" value=@DateTime.Today /></td></tr>
+</table>
+        <input type="submit" value=@WebNorthwindOrders.Resources.Default.Create />
+    </form>
+</div>
+        @Html.ActionLink(WebNorthwindOrders.Resources.Default.Back_To_List, "Index")
+
+
